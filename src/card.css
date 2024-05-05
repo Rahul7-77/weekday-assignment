@@ -1,0 +1,177 @@
+/* card.css */
+
+.cardContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.card {
+    flex: 0 0 calc(30% - 20px);
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 5%;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    margin: 2%;
+    /* Add padding around the items */
+}
+
+.cardOne {
+    display: flex;
+    /* flex-wrap: wrap; */
+    flex-direction: row;
+}
+
+.cardOne-innerOne {
+    /* margin-top: -15%; */
+    width: 15%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.cardOne-innerOne img {
+    width: 80%;
+    height: auto;
+}
+
+.cardOne-innerTwo {
+    padding-left: 3%;
+}
+
+.cardOne-innerTwo * {
+    /* margin-top: -2%; */
+    display: flex;
+    /* justify-content: flex-start; */
+}
+
+.cardOne-innerTwo * {
+    margin-bottom: -5%;
+}
+
+.cardOne-innerTwo h5 {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 85%;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.cardOne-innerTwo-Location {
+    font-size: small;
+}
+
+.cardOne-innerTwo-JobRole {
+    font-size: 100%;
+}
+
+.cardTwo {
+    text-align: left;
+    margin-left: 2%;
+}
+
+.cardTwo h5 {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 90%;
+    font-weight: 400;
+    font-style: normal;
+}
+
+.cardTwo p {
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 90%;
+    font-weight: 300;
+    font-style: normal;
+}
+
+.cardTwo-MinExp {
+    margin-top: -5%;
+}
+
+.cardTwo-ReadMoreBtn {
+    margin-top: 5%;
+    border: none;
+    background-color: transparent;
+    cursor: pointer;
+    color: rgb(47, 47, 212);
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 100%;
+    font-weight: 300;
+    font-style: normal;
+    margin-left: 30%;
+}
+
+/* .applyBtnDiv {
+    height: 150%;
+} */
+
+.ApplyButton {
+    width: 70%;
+    height: 110%;
+    background-color: rgb(85, 239, 196);
+    /* color: rgb(0, 0, 0); */
+    border-color: white;
+    font-weight: 500;
+    padding: 8px 18px;
+    /* background-color: #fff; */
+    box-sizing: border-box;
+    border-radius: 12%;
+    font-family: "Lexend", sans-serif;
+    font-optical-sizing: auto;
+    font-size: 90%;
+    font-weight: 400;
+    font-style: normal;
+}
+
+@media screen and (max-width:480px) {
+    .cardContainer {
+        display: flex;
+        flex-direction: column;
+        flex-wrap: wrap;
+    }
+}
+
+.filter-container {
+    margin-top: 4%;
+    margin-left: 3%;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 20px;
+    /* max-width: fit-content; */
+    /* max-height: 100px; */
+    /* margin-bottom: 20px; */
+}
+
+/* .filter-select {
+    width: 5%;
+} */
+
+/* .filter-input {
+    height: 30px;
+    padding: -100px;
+} */
+
+/* .container {
+    max-width: 800px;
+    margin: 0 auto;
+} */
+
+/* .filter-helper {
+    max-height: -20%;
+} */
+
+.filter-select {
+    width: 130px;
+    height: 30px;
+}
