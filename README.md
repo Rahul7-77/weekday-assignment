@@ -8,7 +8,7 @@ Briefly describe your project here.
 
 To install all the necessary packages required to run this project in your local machine, use the following command:
 
-''' npm install '''
+` npm install `
 
 To start the site in your local machine, use the following command:
 
