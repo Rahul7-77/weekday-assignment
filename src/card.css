@@ -1,5 +1,7 @@
-/* card.css */
-
+/*
+    1) Using flex layout
+    2) created mulitple divs and used flex-direction: row to some and column to some
+*/
 .cardContainer {
     display: flex;
     flex-wrap: wrap;
@@ -18,17 +20,14 @@
     flex-direction: column;
     padding: 10px;
     margin: 2%;
-    /* Add padding around the items */
 }
 
 .cardOne {
     display: flex;
-    /* flex-wrap: wrap; */
     flex-direction: row;
 }
 
 .cardOne-innerOne {
-    /* margin-top: -15%; */
     width: 15%;
     display: flex;
     flex-wrap: wrap;
@@ -46,9 +45,7 @@
 }
 
 .cardOne-innerTwo * {
-    /* margin-top: -2%; */
     display: flex;
-    /* justify-content: flex-start; */
 }
 
 .cardOne-innerTwo * {
@@ -110,29 +107,30 @@
     margin-left: 30%;
 }
 
-/* .applyBtnDiv {
-    height: 150%;
-} */
-
 .ApplyButton {
     width: 70%;
-    height: 110%;
+    height: 100%;
     background-color: rgb(85, 239, 196);
-    /* color: rgb(0, 0, 0); */
+    justify-content: center;
+    align-items: center;
     border-color: white;
     font-weight: 500;
-    padding: 8px 18px;
-    /* background-color: #fff; */
+    padding: 12px 18px;
     box-sizing: border-box;
-    border-radius: 12%;
+    border-radius: 9%;
     font-family: "Lexend", sans-serif;
     font-optical-sizing: auto;
     font-size: 90%;
     font-weight: 400;
     font-style: normal;
+    cursor: pointer;
 }
 
 @media screen and (max-width:480px) {
+
+    /*
+        To achieve responsiveness, we change flex-direction of cardContainer to column when max-width:480px which is size of a mobile device
+    */
     .cardContainer {
         display: flex;
         flex-direction: column;
@@ -148,28 +146,7 @@
     flex-wrap: wrap;
     align-items: center;
     gap: 20px;
-    /* max-width: fit-content; */
-    /* max-height: 100px; */
-    /* margin-bottom: 20px; */
 }
-
-/* .filter-select {
-    width: 5%;
-} */
-
-/* .filter-input {
-    height: 30px;
-    padding: -100px;
-} */
-
-/* .container {
-    max-width: 800px;
-    margin: 0 auto;
-} */
-
-/* .filter-helper {
-    max-height: -20%;
-} */
 
 .filter-select {
     width: 130px;

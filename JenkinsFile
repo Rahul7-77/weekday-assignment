@@ -1,0 +1,87 @@
+library identifier:'jenkins-shared-library@main',retriever:modernSCM(
+    [
+        $class : 'GitSCMSource',
+        remote: 'https://github.com/Rahul7-77/jenkins-shared-library.git'
+    ]
+)
+
+def gv
+pipeline {
+    agent any
+    tools{
+        nodejs 'node'
+    }
+    stages {
+        stage('Git clone') {
+            steps {
+                git branch: 'main', changelog: false, poll: false, url: 'https://github.com/Rahul7-77/weekday-assignment.git'
+            }
+        }
+        stage('Compile'){
+            steps{
+                script{
+                    npmBuild()
+                }
+            }
+        }
+        stage('OWASP Scan'){
+            steps{
+                script{
+                    owaspscan.call()
+                }
+            }
+        }
+        stage('Docker build'){
+            steps{
+                script{
+                    buildImage 'rahul7502/weekday-assign-app'
+                }
+            }
+        }
+        stage('Docker login and push'){
+            steps{
+                script{
+                    dockerLogin 'docker-creds'
+                    dockerPush 'rahul7502/weekday-assign-app'
+                }
+            }
+        }
+        // This is only if needed
+        // stage('Docker run image'){
+        //     steps{
+        //         script{
+        //             runImage('rahul7502/weekday-assign-app',3000)
+        //         }
+        //     }
+        // }
+        stage('kubernetes deploy'){
+            steps{
+                script{
+                    k8Apply 'weekday-assign-app'
+                }
+            }
+        }
+        // this step is to access the site from webBrowser when using minikube
+        stage('Accessing site from webBrowser'){
+            steps{
+                sh 'minikube service my-weekday-service'
+            }
+        }
+    }
+    post {
+        success {
+            emailext(
+                subject: "Build Successful: ${currentBuild.fullDisplayName}",
+                body: "Your build succeeded.",
+                to: "youremail@gmail.com"
+            )
+        }
+        failure {
+            emailext(
+                subject: "Build Failed: ${currentBuild.fullDisplayName}",
+                body: "Your build failed. Please check the Jenkins console output for details.",
+                to: "youremail@gmail.com"
+            )
+        }
+    }
+}

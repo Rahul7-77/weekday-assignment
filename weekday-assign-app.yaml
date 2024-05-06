@@ -1,0 +1,35 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: weekday-assign-app
+  labels:
+    app: weekday-assign-app
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: weekday-assign-app
+  template:
+    metadata:
+      labels:
+        app: weekday-assign-app
+    spec:
+      containers:
+      - name: weekday-assign-app
+        image: rahul7502/weekday-assign-app:latest
+        ports:
+        - containerPort: 3000
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-weekday-service
+spec:
+  selector:
+    app: weekday-assign-app
+  type: LoadBalancer
+  ports:
+  - protocol: TCP
+    port: 3000
+    targetPort: 3000
+    nodePort: 30001

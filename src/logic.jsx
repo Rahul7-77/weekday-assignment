@@ -1,337 +1,27 @@
-// import React, { useState, useEffect } from 'react';
-// import Card from './card.jsx';
-// import './card.css';
-
-// function YourComponent() {
-//   const [alldata, setData] = useState({});
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-//   const [filters, setFilters] = useState({     
-//     location: '',
-//     jobRole: ''
-//   });
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const myHeaders = new Headers();
-//         myHeaders.append("Content-Type", "application/json");
-
-//         const body = JSON.stringify({
-//           "limit": 10,
-//           "offset": 0
-//         });
-
-//         const requestOptions = {
-//           method: "POST",
-//           headers: myHeaders,
-//           body
-//         };
-
-//         const response = await fetch("https://api.weekday.technology/adhoc/getSampleJdJSON", requestOptions);
-//         const result = await response.json();
-//         setData(result);
-//         setLoading(false);
-//       } catch (error) {
-//         setError(error);
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchData();
-//   }, []);
-
-//   // Log the fetched data to the console
-//   //console.log(data);
-//   console.log(alldata);
-//   console.log(alldata['jdList']);
-//   const helper=alldata['jdList'];
-//   {helper && helper.map((item,index)=>{
-//     console.log(item);
-//   })}
-//   const filteredData = alldata['jdList'] && alldata['jdList'].filter(item => {
-//     return (
-//       (!filters.location || item.location.toLowerCase().includes(filters.location.toLowerCase())) &&
-//       (!filters.jobRole || item.jobRole.toLowerCase().includes(filters.jobRole.toLowerCase()))
-//     );
-//   });
-//   return (
-//     <div className="cardContainer">
-//       {loading && <div>Loading...</div>}
-//       {error && <div>Error: {error.message}</div>}
-
-//       {/* Render cards */}
-//       {/* {Array.isArray(alldata['jdList']) ? (
-//         alldata['jdList'].map(item => (
-//           <Card key={item.id} data={item} />
-//         ))
-//       ) : (
-//         <Card data={alldata} />
-//       )} */}
-//       <div>
-//          <label>Location:</label>
-//          <input
-//            type="text"
-//            value={filters.location}
-//            //onChange={e => handleFilterChange('location', e.target.value)}
-//          />
-//        </div>
-//        <div>
-//          <label>Job Role:</label>
-//          <input
-//            type="text"
-//            value={filters.jobRole}
-//            //onChange={e => handleFilterChange('jobRole', e.target.value)}
-//          />
-//        </div>
-//       {Array.isArray(filteredData) ? (
-//         filteredData.map(item => (
-//           <Card key={item.id} data={item} />
-//         ))
-//       ) : (
-//         <Card data={alldata} />
-//       )}
-//     </div>
-//   );
-// }
-
-// export default YourComponent;
-
-// // import React, { useState, useEffect } from 'react';
-// // import Card from './card.jsx';
-// // import './card.css';
-
-// // function YourComponent() {
-// //   const [jobData, setJobData] = useState({});
-// //   const [loading, setLoading] = useState(true);
-// //   const [error, setError] = useState(null);
-// //   const [filters, setFilters] = useState({
-// //     location: '',
-// //     jobRole: ''
-// //   });
-
-// //   useEffect(() => {
-// //     const fetchData = async () => {
-// //       try {
-// //         const myHeaders = new Headers();
-// //         myHeaders.append("Content-Type", "application/json");
-
-// //         const body = JSON.stringify({
-// //           "limit": 10,
-// //           "offset": 0
-// //         });
-
-// //         const requestOptions = {
-// //           method: "POST",
-// //           headers: myHeaders,
-// //           body
-// //         };
-
-// //         const response = await fetch("https://api.weekday.technology/adhoc/getSampleJdJSON", requestOptions);
-// //         const result = await response.json();
-// //         setJobData(result);
-// //         setLoading(false);
-// //       } catch (error) {
-// //         setError(error);
-// //         setLoading(false);
-// //       }
-// //     };
-
-// //     fetchData();
-// //   }, []);
-
-// //   const handleFilterChange = (filterName, value) => {
-// //     setFilters(prevFilters => ({
-// //       ...prevFilters,
-// //       [filterName]: value
-// //     }));
-// //   };
-
-// //   // const filteredData = jobData['jdList'].filter(item => {
-// //   //   return (
-// //   //     (!filters.location || item.location === filters.location) &&
-// //   //     (!filters.jobRole || item.jobRole === filters.jobRole)
-// //   //   );
-// //   // });
-// //   // const filteredData=jobData;
-
-// //   return (
-// //     <div>
-// //       {/* Filter UI */}
-// //       <div>
-// //         <label>Location:</label>
-// //         <input
-// //           type="text"
-// //           value={filters.location}
-// //           onChange={e => handleFilterChange('location', e.target.value)}
-// //         />
-// //       </div>
-// //       <div>
-// //         <label>Job Role:</label>
-// //         <input
-// //           type="text"
-// //           value={filters.jobRole}
-// //           onChange={e => handleFilterChange('jobRole', e.target.value)}
-// //         />
-// //       </div>
-
-// //       {/* Display filtered data */}
-// //       <div className="cardContainer">
-// //         {loading && <div>Loading...</div>}
-// //         {error && <div>Error: {error.message}</div>}
-// //         {jobData['jdList'].map(item => (
-// //           <Card key={item.id} data={item} />
-// //         ))}
-// //       </div>
-// //     </div>
-// //   );
-// // }
-
-// // export default YourComponent;
-
-
-// import React, { useState, useEffect } from 'react';
-// import Card from './card.jsx';
-// import './card.css';
-// import { FormControl, InputLabel, Select, MenuItem, TextField, Button } from '@mui/material'; // Import Material-UI components
-
-// function YourComponent() {
-//   const [alldata, setData] = useState({});
-//   const [loading, setLoading] = useState(true);
-//   const [error, setError] = useState(null);
-//   const [filters, setFilters] = useState({
-//     minExp: '',
-//     location: '',
-//     jobRole: '',
-//     CompanyName: '',
-//     RemoteOrOnSite: '',
-//     MinBasePay: ''
-//   });
-
-//   useEffect(() => {
-//     const fetchData = async () => {
-//       try {
-//         const myHeaders = new Headers();
-//         myHeaders.append("Content-Type", "application/json");
-
-//         const body = JSON.stringify({
-//           "limit": 10,
-//           "offset": 0
-//         });
-
-//         const requestOptions = {
-//           method: "POST",
-//           headers: myHeaders,
-//           body
-//         };
-
-//         const response = await fetch("https://api.weekday.technology/adhoc/getSampleJdJSON", requestOptions);
-//         const result = await response.json();
-//         setData(result);
-//         setLoading(false);
-//       } catch (error) {
-//         setError(error);
-//         setLoading(false);
-//       }
-//     };
-
-//     fetchData();
-//   }, []);
-
-//   const filteredData = alldata['jdList'] && alldata['jdList'].filter(item => {
-//     return (
-//       (!filters.location || item.location.toLowerCase().includes(filters.location.toLowerCase())) &&
-//       (!filters.jobRole || item.jobRole.toLowerCase().includes(filters.jobRole.toLowerCase()))
-//     );
-//   });
-
-//   return (
-//     <div className="container">
-//       <div className="filter-container">
-//         {/* <FormControl className="filter-select">
-//           <InputLabel>Type</InputLabel>
-//           <Select
-//             value={filters.type}
-//             onChange={(e) => setFilters({ ...filters, type: e.target.value })}
-//           >
-//             <MenuItem value="Type 1">Type 1</MenuItem>
-//             <MenuItem value="Type 2">Type 2</MenuItem>
-//             <MenuItem value="Type 3">Type 3</MenuItem>
-//           </Select>
-//         </FormControl> */}
-//         <div className="filter-helper">
-//             <TextField
-//             className="filter-input"
-//             label="minExp"
-//             value={filters.minExp}
-//             onChange={(e) => setFilters({ ...filters, minExp: e.target.value })}
-//           />
-//         </div>
-//         <TextField
-//           className="filter-input"
-//           label="CompanyName"
-//           value={filters.CompanyName}
-//           onChange={(e) => setFilters({ ...filters, CompanyName: e.target.value })}
-//         />
-//         <TextField
-//           className="filter-input"
-//           label="Remote/On-site"
-//           value={filters.RemoteOrOnSite}
-//           onChange={(e) => setFilters({ ...filters, RemoteOrOnSite: e.target.value })}
-//         />
-//         <TextField
-//           className="filter-input"
-//           label="Job Role"
-//           value={filters.jobRole}
-//           onChange={(e) => setFilters({ ...filters, jobRole: e.target.value })}
-//         />
-//         <TextField
-//           className="filter-input"
-//           label="Location"
-//           value={filters.location}
-//           onChange={(e) => setFilters({ ...filters, location: e.target.value })}
-//         />
-//         <TextField
-//           className="filter-input"
-//           label="Min Base Pay"
-//           value={filters.MinBasePay}
-//           onChange={(e) => setFilters({ ...filters, MinBasePay: e.target.value })}
-//         />
-
-//         <Button variant="contained" onClick={() => console.log(filters)}>Apply</Button>
-//       </div>
-
-//       <div className="cardContainer">
-//         {loading && <div>Loading...</div>}
-//         {error && <div>Error: {error.message}</div>}
-//         {filteredData && filteredData.map(item => (
-//           <Card key={item.id} data={item} />
-//         ))}
-//       </div>
-//     </div>
-//   );
-// }
-
-// export default YourComponent;
-
 import React, { useState, useEffect } from 'react';
 import Card from './card.jsx';
 import './card.css';
-import { TextField, Button } from '@mui/material'; // Import Material-UI components
+import { TextField, Button } from '@mui/material'; // Importing Material-UI components
 
-function YourComponent() {
+function MyComponent() {
+  /*
+    1) In order to preserve states (data) in our site, we will be using react hooks
+    2) using 'useState' hook to store all the data we get from our API Call. alldata stores data and setData function updates it
+    3) We handle error using another 'useState' hook
+    4) Inorder to apply filters we use use another 'useState' hook to understand which all filters are triggered and what are their values
+    5) filters 'useState' hook has an object data with attributes location,jobRole,companyName,minexp,minBase salary.
+  */
   const [alldata, setData] = useState({});
-  const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [filters, setFilters] = useState({
     location: '',
     jobRole: '',
     companyName: '',
-    RemoteOrOnSite: '',
-    MinBasePay: '',
-    minexp:0
+    minexp: '',
+    minJdSalary: ''
   });
-
+  
+  // Fetching the data from API Call.
   useEffect(() => {
     const fetchData = async () => {
       try {
@@ -352,40 +42,33 @@ function YourComponent() {
         const response = await fetch("https://api.weekday.technology/adhoc/getSampleJdJSON", requestOptions);
         const result = await response.json();
         setData(result);
-        setLoading(false);
       } catch (error) {
+        // If error setError so that we can display the error to user
         setError(error);
-        setLoading(false);
       }
     };
 
     fetchData();
   }, []);
 
-  // const filteredData = alldata['jdList'] && alldata['jdList'].filter(item => {
-  //   return (
-  //     (!filters.location || item.location.toLowerCase().includes(filters.location.toLowerCase())) &&
-  //     (!filters.jobRole || item.jobRole.toLowerCase().includes(filters.jobRole.toLowerCase()))
-  //   );
-  // });
-  // const filteredData = alldata['jdList'] && alldata['jdList'].filter(item => {
-  //   return (
-  //     (!filters.minExp || item.minExp === filters.minExp) &&
-  //     (!filters.CompanyName || (item.CompanyName && item.CompanyName.toLowerCase().includes(filters.CompanyName.toLowerCase()))) &&
-  //     (!filters.RemoteOrOnSite || (item.RemoteOrOnSite && item.RemoteOrOnSite.toLowerCase().includes(filters.RemoteOrOnSite.toLowerCase()))) &&
-  //     (!filters.jobRole || (item.jobRole && item.jobRole.toLowerCase().includes(filters.jobRole.toLowerCase()))) &&
-  //     (!filters.location || (item.location && item.location.toLowerCase().includes(filters.location.toLowerCase()))) &&
-  //     (!filters.MinBasePay || item.MinBasePay === filters.MinBasePay)
-  //   );
-  // });
+  /*
+    1) The below code is main heart of filtering feature
+    2) Each filter is a 'Textfield' tag and whenever there is a change in it (when we write in it) then it will trigger setFilters function of useState hook
+    3) In that setFilters functions we update the values of filters
+    4) Now when coming to filtering we use .filter function in javascript to filter out all data which matches according to filters in our useState hook
+    5) As per given instruction, if there is a null we will be excluding it from filtering process by keeping a ternary operator 
+    6) All the data which got filtered will be stored in filteredData
+    7) We now take this filteredData and map every item in it to the custom Card we had created
+    8) Initially by default all our filters dont have any values so all the data from our api call will be rendered in cards.
+  */
   const filteredData = alldata['jdList'] && alldata['jdList'].filter(item => {
     return (
-      (!filters.minexp || item.minexp === filters.minexp) &&
+      (!filters.minExp || (item.minExp && item.minExp <= filters.minExp)) &&
       (!filters.companyName || (item.companyName && item.companyName.toLowerCase().includes(filters.companyName.toLowerCase()))) &&
       (!filters.RemoteOrOnSite || (item.RemoteOrOnSite && item.RemoteOrOnSite.toLowerCase().includes(filters.RemoteOrOnSite.toLowerCase()))) &&
       (!filters.jobRole || (item.jobRole && item.jobRole.toLowerCase().includes(filters.jobRole.toLowerCase()))) &&
       (!filters.location || (item.location && item.location.toLowerCase().includes(filters.location.toLowerCase()))) &&
-      (!filters.MinBasePay || item.MinBasePay === filters.MinBasePay)
+      (!filters.minJdSalary || (item.minJdSalary && item.minJdSalary >= filters.minJdSalary))
     );
   });
   return (
@@ -394,20 +77,15 @@ function YourComponent() {
           <TextField
             className="filter-input"
             label="minExp"
-            value={filters.minexp}
-            onChange={(e) => setFilters({ ...filters, minexp: e.target.value })}
+            value={filters.minExp}
+            // whenever there is a onChange, setFilters function will be triggered and values will get updated
+            onChange={(e) => setFilters({ ...filters, minExp: e.target.value })}
           />
         <TextField
           className="filter-input"
           label="companyName"
           value={filters.companyName}
           onChange={(e) => setFilters({ ...filters, companyName: e.target.value })}
-        />
-        <TextField
-          className="filter-input"
-          label="Remote/On-site"
-          value={filters.RemoteOrOnSite}
-          onChange={(e) => setFilters({ ...filters, RemoteOrOnSite: e.target.value })}
         />
         <TextField
           className="filter-input"
@@ -423,17 +101,13 @@ function YourComponent() {
         />
         <TextField
           className="filter-input"
-          label="Min Base Pay"
-          value={filters.MinBasePay}
-          onChange={(e) => setFilters({ ...filters, MinBasePay: e.target.value })}
+          label="minJdSalary"
+          value={filters.minJdSalary}
+          onChange={(e) => setFilters({ ...filters, minJdSalary: e.target.value })}
         />
-
-        {/* Uncomment below button if you want to apply filters manually */}
-        {/* <Button variant="contained" onClick={() => console.log(filters)}>Apply</Button> */}
       </div>
 
       <div className="cardContainer">
-        {loading && <div>Loading...</div>}
         {error && <div>Error: {error.message}</div>}
         {filteredData && filteredData.map(item => (
           <Card key={item.id} data={item} />
@@ -443,5 +117,5 @@ function YourComponent() {
   );
 }
 
-export default YourComponent;
+export default MyComponent;
 
