@@ -1,8 +1,4 @@
-# Project Name
-
-## Description
-
-Briefly describe your project here.
+# Weekday Assign App
 
 ## Installation
 
@@ -12,7 +8,7 @@ To install all the necessary packages required to run this project in your local
 
 To start the site in your local machine, use the following command:
 
-''' npm start '''
+` npm start `
 
 
 ## Additional Implementations
